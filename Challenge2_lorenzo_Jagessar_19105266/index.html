@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html id="hstyle" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="scripts/main.js" defer></script> <!--defer om ervoor te zorgen dat het als laatste geladen wordt-->
+        <title>ClockLorenzoJagessar</title>
+    </head>
+    <body onload="beginTime()"> <!--laadt functie wanneer de pagina laadt-->
+        <div class="container">
+            <div class="header">
+                <header>
+                    <img class="logo" src="pictures/SpaceX-Logo original.svg" alt="">
+                </header>
+            </div>
+            <div class="blockclock">
+                <h1>Earth Time</h1>
+                <h2 id="currentclock"></h2> <!--voor javascript en css-->
+            </div>
+            <div class="blockdate">
+                <h1 id="currentdate"></h1> <!--voor javascript en css-->
+            </div>
+            <div class="blockphase">
+                <h1 id="currentphase"></h1> <!--voor javascript en css-->
+            </div>
+            <div class="blockother">
+                <h1>To Do</h1>
+                <h2 id="currentnote"></h2> <!--voor javascript en css-->
+            </div>
+        </div>
+    </body>
+</html>

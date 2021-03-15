@@ -1,0 +1,181 @@
+/*Font face toevoegen om te gebruiken*/
+@font-face{
+    font-family: Poppins;
+    src:url(../fonts/Poppins-Bold.ttf);
+}
+
+/*hoogte 100% zetten zodat de achtergrondafbeelding ook zo groot is*/
+html, body{
+    height: 100%;
+}
+
+/*font-family aanpassen naar poppins*/
+body{
+    margin: 0;
+    font-family: Poppins;
+}
+
+/*grid area aangeven en een margin van 70px*/
+.header{
+    grid-area: header;
+    margin-bottom: 70px;
+}
+
+/*header achtergrondkleur en de padding zodat die niet tegen de rand aan zit*/
+header{
+    background-color: #0F1112;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*de blokken*/
+.blockclock,.blockdate,.blockphase,.blockother{
+    background-color: rgba(255, 255, 255, 0.8); /*om handmatig de opacity aan te passen*/
+    width: 80%; /*algemene breedte in procenten zodat deze mooi meeschaalt*/
+    /*Margin left en right auto om het netjes in het midden te krijgen*/
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 75px;
+    text-align: center;
+    border-radius: 10px; /*heeft nu ronde hoeken*/
+    transition: ease-in-out 0.5s; /*een animatie wanneer je eroverheen gaat*/
+}
+
+.blockclock:hover,.blockdate:hover,.blockphase:hover,.blockother:hover{ /*activeert wanneer je met je muis eroverheen gaat*/
+    transform: scale(1.1); /*wordt ietsjes groter*/
+    /*BUG? wanneer de blok groter wordt, laat het een soort "spoor" achter (probeer het uit). Ik heb google afgezocht naar het probleem maar zonder resultaat. Ik heb het wel eringelaten omdat
+    ik het wel een mooie animatie vind en dit ook duidelijk maakt waar je met je muis bent*/
+}
+
+/*de grootte van de tijd aanpassen*/
+#currentclock{
+    font-size: 200%;
+}
+
+/*aanwijzen grid-area*/
+.blockclock{
+    grid-area: klok;
+}
+
+/*aanwijzen grid-area*/
+.blockdate{
+    grid-area: date;
+}
+
+/*aanwijzen grid-area*/
+.blockphase{
+    grid-area: phase;
+}
+
+/*aanwijzen grid-area*/
+.blockother{
+    grid-area: other;
+}
+
+/*SPECIALE CLASSES DIE GEACTIVEERD WORDEN VIA JAVASCRIPT*/
+.spacenight{
+    background-image: url(../pictures/space.png); /*link naar de foto's*/
+    height: 150%;
+    background-position: center; /*staat in het midden van het scherm*/
+    background-repeat: no-repeat; /*dat je niet dezelfde achtergrond vaker ziet*/
+    background-size: cover; /*bedekt heel de html*/
+    transition: ease-in-out 2s; /*animatie erin dat het een soort van beweegt*/
+    background-attachment: fixed; /*fixed zodat de afbeelding op dezelfde plaats blijft*/
+}
+
+.spaceafternoon{
+    background-image: url(../pictures/galaxy.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: ease-in-out 2s;
+    background-attachment: fixed;
+}
+
+.spacemorning{
+    background-image: url(../pictures/andy-holmes-BIdxEi7cWLM-unsplash.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: ease-in-out 2s;
+    background-attachment: fixed;
+}
+
+.spaceevening{
+    background-image: url(../pictures/nathan-anderson-9o-VrJSwGuw-unsplash.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: ease-in-out 2s;
+    background-attachment: fixed;
+}
+
+
+
+/*MOBILE VIEW*/
+@media only screen and (min-width:0px){
+    /*grid gebruikt om de grid-areas gemakkelijk te plaatsen*/
+    .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "header"
+            "klok"
+            "date"
+            "phase"
+            "other"
+        ;
+    }
+    #currentdate, #currentphase{
+        text-align: center; /*tekst gecentreerd*/
+        padding-top: 45px; /*padding aangepast zodat de tekst in het midden staat*/
+    }
+
+}
+
+/*TABLET VIEW*/
+@media only screen and (min-width:768px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+            "header header header header header header"
+            "klok klok klok date date date"
+            "phase phase phase other other other"
+        ;
+    }
+    #currentdate, #currentphase{
+        text-align: center; /*tekst gecentreerd*/
+        padding-top: 40px; /*padding aangepast zodat de tekst in het midden staat*/
+    }
+}
+
+/*DESKTOP VIEW*/
+@media only screen and (min-width: 1024px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "header header header header header header header header"
+            "klok klok klok klok klok klok klok klok"
+            " date date date date phase phase phase phase"
+            "other other other other other other other other"
+        ;
+    }
+    .blockdate,.blockphase{
+        width: 60%; /*een andere percentage width zodat die mooi gelijnd is met de andere blokken*/
+    }
+    #currentdate, #currentphase{
+        text-align: center; /*tekst gecentreerd*/
+        padding-top: 40px; /*padding aangepast zodat de tekst in het midden staat*/
+    }
+}
+
+
